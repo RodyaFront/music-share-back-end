@@ -1,0 +1,34 @@
+import express from 'express'
+import bodyParser from 'body-parser'
+import mongoose from 'mongoose'
+import config from 'config'
+import mainRouters from "./routes/main.routes.js"
+import cors from 'cors'
+
+const app = express();
+app.use(cors())
+
+app.use(bodyParser.json({ limit: "30mb", extended: true }))
+app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
+
+app.use(mainRouters)
+app.get('*', (req,res) => {
+    res.status(404).sendFile(__dirname + '/error404.html')
+})
+
+async function start() {
+    try {
+        await mongoose.connect(config.get('mongoUri'), {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        })
+        app.listen(config.get('port'), () => {
+            console.log(`Server has starter on [ http://localhost:${config.get('port')} ]`)
+        })
+    }catch (e) {
+        console.error('Server error:',e)
+        process.exit(1)
+    }
+}
+
+start()

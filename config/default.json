@@ -1,0 +1,7 @@
+{
+  "port": 5000,
+  "mongoUri": "mongodb+srv://rodion:Radik1001@cluster0.aobsr.azure.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "jwtSecret": "rodionHordiienkoBackend",
+  "JWT_SECRET": "Rodya Oficial website",
+  "JWT_REFRESH_SECRET": "Rodya Oficial website 777"
+}
