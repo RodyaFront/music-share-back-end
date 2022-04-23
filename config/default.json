@@ -1,7 +1,6 @@
 {
-  "port": 5000,
+  "port": 3000,
   "mongoUri": "mongodb+srv://rodion:Radik1001@cluster0.aobsr.azure.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-  "jwtSecret": "rodionHordiienkoBackend",
-  "JWT_SECRET": "Rodya Oficial website",
-  "JWT_REFRESH_SECRET": "Rodya Oficial website 777"
+  "JWT_SECRET": "TNFgV0jmKpQwYUmGQd9gfQ1/JWk/+R/cFaTy+CQxYlVm1DbbPRB6hUruD/ZebJXoR1AcdRgDUwdZ1TcOCr/r/6vcsgGV1Z7TnpiKmL80pPIWDZOyeSYS/hGx59t5gDH0zRlWKUpNWPsUbLjbzZ4zbqNFTemMjnUfuZHAHPZcYtU='",
+  "JWT_REFRESH_SECRET": "'Wc1BkMR3ljf9WFSJbzDo7FHkR8c4nRMvPGsJ8NRKWJC6FCqogYxGgT+3oDZJrqW17PaQUICa/9uIqIgv2ZMzA4E7rDYg1VbR7pdyT5sV7uUAReJV3mUvlrFCSONoD5VY1jJ31PKK/eBNYFNWS1s4xfKPoaanmx/KKNYVLaNY/8Q="
 }

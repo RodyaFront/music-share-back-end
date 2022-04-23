@@ -4,8 +4,16 @@ import mongoose from 'mongoose'
 import config from 'config'
 import mainRouters from "./routes/main.routes.js"
 import cors from 'cors'
+import * as http from "http";
+
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
+
 app.use(cors())
 
 app.use(bodyParser.json({ limit: "30mb", extended: true }))
@@ -22,8 +30,11 @@ async function start() {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
-        app.listen(config.get('port'), () => {
-            console.log(`Server has starter on [ http://localhost:${config.get('port')} ]`)
+        http.createServer(app).listen(config.get('port'),'0.0.0.0', () => {
+            console.log(`
+            Server has starter on   [ http://localhost:${config.get('port')} ]
+                                    [ http://127.0.0.1:${config.get('port')} ]
+            `)
         })
     }catch (e) {
         console.error('Server error:',e)

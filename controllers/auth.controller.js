@@ -29,7 +29,7 @@ export default {
 
             await user.save()
 
-            res.status(201).json('User successfully created')
+            res.status(201).json({ok: true, message: 'User successfully created.'})
 
         } catch (e) {
             res.status(500).json({message: 'Server error'})
@@ -64,11 +64,11 @@ export default {
 
             const token = jwt.sign(
                 {userIf: user.id},
-                config.get('jwtSecret'),
+                config.get('JWT_SECRET'),
                 {expiresIn: '1h'}
             )
 
-            res.json({token, userId: user.id})
+            res.json({token, userId: user.id, ok: true})
 
         } catch (e) {
             res.status(500).json({message: 'Server error'})
