@@ -38,43 +38,38 @@ process.argv.forEach(arg => {
     }
 })
 
-
-async function local() {
+async function start() {
     try {
         await mongoose.connect(config.get('MONGO_URI'), {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
         const port = config.get('PORT')
-        http.createServer(app).listen(port, '192.168.0.103', () => {
-            console.log(`
+
+        if(args.ENV === 'dev') { //local
+            return app.listen(port, () => {
+                console.log(`Server has starter on   [ http://localhost:${port} ]`)
+            })
+        }
+
+        if(args.ENV === 'laptop') { // laptop
+            return http.createServer(app).listen(port, '192.168.0.103', () => {
+                console.log(`
             Server has starter on   [ http://localhost:${port} ]
                                     [ http://192.168.0.103:${port} ]
             `)
-        })
-    } catch (e) {
-        console.error('Server error:', e)
-        process.exit(1)
-    }
-}
+            })
+        }
 
-async function heroku() {
-    try {
-        await mongoose.connect(config.get('MONGO_URI'), {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        })
+        // heroku
         app.listen(process.env.PORT || 5000, () => {
             console.log(`Server has starter...`)
         })
+
     } catch (e) {
         console.error('Server error:', e)
         process.exit(1)
     }
 }
 
-if(args.ENV === 'prod') {
-    heroku()
-}else {
-    local()
-}
+start()

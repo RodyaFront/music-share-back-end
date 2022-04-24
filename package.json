@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon main.js --ENV=dev",
+    "laptopdev": "nodemon main.js --ENV=laptop",
     "start": "node main --ENV=prod"
   },
   "author": "",
