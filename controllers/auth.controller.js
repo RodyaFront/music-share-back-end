@@ -2,7 +2,6 @@ import {validationResult} from "express-validator"
 import User from "../models/User.js"
 import bcrypt from "bcryptjs"
 import jwt from "jsonwebtoken"
-import config from "config"
 
 export default {
     registration: async (req, res) => {
@@ -64,7 +63,7 @@ export default {
 
             const token = jwt.sign(
                 {userIf: user.id},
-                config.get('JWT_SECRET'),
+                process.env.JWT_SECRET,
                 {expiresIn: '1h'}
             )
 
