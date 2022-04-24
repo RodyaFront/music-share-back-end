@@ -20,6 +20,9 @@ app.use(bodyParser.json({ limit: "30mb", extended: true }))
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 
 app.use(mainRouters)
+app.get('/', (req, res) => {
+    res.status(404).sendFile(__dirname + '/index.html')
+})
 app.get('*', (req,res) => {
     res.status(404).sendFile(__dirname + '/error404.html')
 })
