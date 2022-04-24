@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon main.js",
-    "start": "node main"
+    "dev": "nodemon main.js --ENV=dev",
+    "start": "node main --ENV=prod"
   },
   "author": "",
   "type": "module",
@@ -16,6 +16,7 @@
     "cheerio": "^1.0.0-rc.10",
     "config": "^3.3.7",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "express-validator": "^6.14.0",
     "jsonwebtoken": "^8.5.1",
