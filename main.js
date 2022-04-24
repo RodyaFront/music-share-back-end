@@ -30,10 +30,10 @@ async function start() {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
-        http.createServer(app).listen(config.get('port'),'0.0.0.0', () => {
+        http.createServer(app).listen(config.get('port'),'192.168.0.103', () => {
             console.log(`
             Server has starter on   [ http://localhost:${config.get('port')} ]
-                                    [ http://127.0.0.1:${config.get('port')} ]
+                                    [ http://192.168.0.103:${config.get('port')} ]
             `)
         })
     }catch (e) {

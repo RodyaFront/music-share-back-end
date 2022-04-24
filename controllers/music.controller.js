@@ -2,7 +2,7 @@ import Track from '../models/Track.js'
 import { parseYoutubeMusic } from '../utils/parsers.js'
 
 export default {
-    getAllTracks: async (req, res, next) => {
+    getAll: async (req, res, next) => {
         try {
             const tracks = await Track.find()
             res.json({items: tracks})
@@ -10,7 +10,7 @@ export default {
             next(e)
         }
     },
-    addTrack: async (req, res, next) => {
+    add: async (req, res, next) => {
         try {
             const {link, genres} = req.body
 
@@ -23,6 +23,24 @@ export default {
             await newTrack.save()
 
             res.json({ data: newTrack, status: 201 });
+        } catch (e) {
+            next(e)
+        }
+    },
+    delete: async (req, res, next) => {
+        try {
+            const {id} = req.body
+            await Track.findByIdAndDelete(id)
+            res.status(200).json({ok: true})
+        } catch (e) {
+            next(e)
+        }
+    },
+    edit: async (req, res, next) => {
+        try {
+            const {data, id} = req.body
+            await Track.findByIdAndUpdate(id, data)
+            res.status(200).json({ok: true})
         } catch (e) {
             next(e)
         }
