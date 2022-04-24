@@ -33,10 +33,7 @@ async function start() {
             useUnifiedTopology: true,
         })
        app.listen(process.env.PORT || 5000, () => {
-            console.log(`
-            Server has starter on   [ http://localhost:${config.get('port')} ]
-                                    [ http://192.168.0.103:${config.get('port')} ]
-            `)
+            console.log(`Server has starter...`)
         })
     }catch (e) {
         console.error('Server error:',e)
