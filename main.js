@@ -4,7 +4,6 @@ import mongoose from 'mongoose'
 import config from 'config'
 import mainRouters from "./routes/main.routes.js"
 import cors from 'cors'
-import * as http from "http";
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
@@ -33,7 +32,7 @@ async function start() {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
-        http.createServer(app).listen(config.get('port'),'192.168.0.103', () => {
+       app.listen(config.get('port'), () => {
             console.log(`
             Server has starter on   [ http://localhost:${config.get('port')} ]
                                     [ http://192.168.0.103:${config.get('port')} ]
