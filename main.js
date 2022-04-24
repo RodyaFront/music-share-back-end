@@ -32,7 +32,7 @@ async function start() {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         })
-       app.listen(80, () => {
+       app.listen(config.get('port') || 3000, () => {
             console.log(`
             Server has starter on   [ http://localhost:${config.get('port')} ]
                                     [ http://192.168.0.103:${config.get('port')} ]
